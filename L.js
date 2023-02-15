@@ -1,43 +1,26 @@
-// Base class
 class Rectangle {
-    constructor(width, height) {
-      this.width = width;
-      this.height = height;
-    }
-  
-    getArea() {
-      return this.width * this.height;
-    }
+  constructor(width, height) {
+    this.width = width;
+    this.height = height;
   }
-  
-  // Derived class
-  class Square extends Rectangle {
-    constructor(sideLength) {
-      super(sideLength, sideLength);
-    }
-  
-    setWidth(width) {
-      this.width = width;
-      this.height = width;
-    }
-  
-    setHeight(height) {
-      this.width = height;
-      this.height = height;
-    }
+
+  area() {
+    return this.width * this.height;
   }
-  
-  // Client code
-  function printArea(rectangle) {
-    console.log(rectangle.getArea());
+}
+
+class Square extends Rectangle {
+  constructor(side) {
+    super(side, side);
   }
-  
-  const rectangle = new Rectangle(3, 4);
-  const square = new Square(5);
-  
-  printArea(rectangle); // Output: 12
-  printArea(square);    // Output: 25
-  
-  square.setWidth(10);
-  printArea(square);    // Output: 100
-  
+}
+
+function calculateArea(rectangle) {
+  return rectangle.area();
+}
+
+const rectangle = new Rectangle(3, 4);
+const square = new Square(5);
+
+console.log(calculateArea(rectangle)); // Output: 12
+console.log(calculateArea(square)); // Output: 25
